@@ -5,6 +5,7 @@ import time
 from selenium.common import TimeoutException
 from selenium.webdriver import Keys
 
+from generator.generator import generated_color
 from locators.widgets_page_locators import AccordianPageLocators, AutoCompletePageLocators
 from pages.base_page import BasePage
 
