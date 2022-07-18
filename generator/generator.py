@@ -1,7 +1,7 @@
 import os
 import random
 
-from gata.data import Person
+from gata.data import Person, Color
 from faker import Faker
 
 faker_ru = Faker("ru_RU")
@@ -35,3 +35,10 @@ def generated_subject():
     data = ["Hindi", "English", "Maths", "Physics", "Chemistry", "Biology", "Computer Science", "Commerce",
             "Accounting", "Economics", "Arts", "Social Studies", "History", "Civics"]
     return data[random.randint(0, len(data) - 1)]
+
+
+def generated_color():
+    yield Color(
+        color_name=["Red", "Blue", "Green", "Yellow", "Purple", "Black", "White", "Voilet", "Indigo", "Magenta", "Aqua"]
+    )
+

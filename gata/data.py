@@ -14,3 +14,7 @@ class Person:
     permanent_address: str = None
     mobile: str = None
     subject: str = None
+
+@dataclass
+class Color:
+    color_name: list = None
