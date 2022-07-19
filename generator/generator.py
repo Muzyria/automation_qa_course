@@ -1,10 +1,12 @@
 import os
 import random
 
-from gata.data import Person, Color
+from gata.data import Person, Color, Date
 from faker import Faker
 
 faker_ru = Faker("ru_RU")
+faker_en = Faker("en")
+
 Faker.seed()
 
 
@@ -40,4 +42,13 @@ def generated_subject():
 def generated_color():
     yield Color(
         color_name=["Red", "Blue", "Green", "Yellow", "Purple", "Black", "White", "Voilet", "Indigo", "Magenta", "Aqua"]
+    )
+
+
+def generated_date():
+    yield Date(
+        year=faker_en.year(),
+        month=faker_en.month_name(),
+        day=faker_en.day_of_month(),
+        time=f"{random.randint(0, 23):02}:{random.randrange(0, 60, 15):02}",
     )
