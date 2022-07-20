@@ -1,4 +1,4 @@
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage
 
 
 class TestWidgets:
@@ -36,17 +36,33 @@ class TestWidgets:
             color_result = autocomplete_page.check_color_in_single()
             assert color == color_result, 'the added colors are missing in the input'
 
+    class TestDatePickerPage:
+        def test_change_date(self, driver):
+            date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
+            date_picker_page.open()
+            value_date_before, value_date_after = date_picker_page.select_date()
+            # print(value_date_before, value_date_after)
+            assert value_date_before != value_date_after, 'the date has not been changed'
 
-class TestDatePickerPage:
-    def test_change_date(self, driver):
-        date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
-        date_picker_page.open()
-        value_date_before, value_date_after = date_picker_page.select_date()
-        assert value_date_before != value_date_after, 'the date has not been changed'
+        def test_change_date_and_time(self, driver):
+            date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
+            date_picker_page.open()
+            value_date_before, value_date_after = date_picker_page.select_date_and_time()
+            print(value_date_before, value_date_after)
+            assert value_date_before != value_date_after, 'the date and time have not been changed'
 
-    def test_change_date_and_time(self, driver):
-        date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
-        date_picker_page.open()
-        value_date_before, value_date_after = date_picker_page.select_date_and_time()
-        #print(value_date_before, value_date_after)
-        assert value_date_before != value_date_after, 'the date and time have not been changed'
+    class TestSliderPage:
+        def test_slider(self, driver):
+            slider = SliderPage(driver, 'https://demoqa.com/slider')
+            slider.open()
+            before, after = slider.change_slider_value()
+            # print(before, after)
+            assert before != after, 'the slider value has not been changed'
+
+    class TestProgressBarPage:
+        def test_progress_bar(self, driver):
+            progress_bar = ProgressBarPage(driver, 'https://demoqa.com/progress-bar')
+            progress_bar.open()
+            before, after = progress_bar.change_progress_bar_value()
+            # print(before, after)
+            assert before != after, 'the progress bar value has not been changed'
