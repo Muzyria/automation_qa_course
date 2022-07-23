@@ -10,11 +10,15 @@
 import random
 import time
 
+import allure
+
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage, LinksPage, \
     UploadAndDownload, DynamicPropertiesPage
 
 
+@allure.suite("Elements")
 class TestElements:
+
     class TestTextBox:
 
         def test_text_box(self, driver):
